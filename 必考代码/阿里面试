@@ -1,0 +1,95 @@
+//评测题目: 无
+
+
+go 中继承如何实现
+type A struct {
+	Val int
+}
+
+func (a A) Get() {
+	//
+}
+
+func (b B) Get () {
+	//
+}
+
+type B struct {
+	ValueB int
+    A
+}
+
+
+
+b := B{}
+
+b.Get()
+
+
+
+func x() {
+	return x
+}
+
+func test1 (x) {
+	x = ?
+}
+
+func test () {
+
+  	x = 5
+	defer test1(x())
+    x = 6 
+}
+
+
+
+/*
+ 问题：0/1矩阵，寻找最大由1组成的连续正方形。 扩展：寻找连续长方形
+*/
+
+
+[
+  1 0 0 0
+  0 1 1 0
+  0 1 1 1
+  0 0 1 1
+]
+
+func searchMaxSqure(arr [][]int) int {
+  	if arr == nil {
+    	return 0
+    }
+  
+	maxValue := 0
+    dp := make([][]int, len(arr))
+    for i := 0; i < len(arr[arr]); i++ {
+    	dp = append(dp, arr[i])
+    }
+  
+    for i := 1; i < len(arr); i++ {
+    	for j := 1; j < len(arr[0]); j++  {
+        	if arr[i][j] == 0 {
+              	dp[i][j] = 0
+            	continue
+            }
+          
+          	if dp[i-1][j-1] != 0 {
+            	for k := i; k > i - dp[i-1][j-1]; k-- {
+                	if arr[k][j] == 1 {}
+                }
+              
+              	
+            }
+          	
+          	if arr[i-1][j] == 1 && arr[i][j-1] == 1 && dp[i-1][j-1] != 0 {
+            	dp[i][j] = dp[i-1][j-1] + 1
+                if maxValue < dp[i][j] {
+                	maxValue = dp[i][j]
+                }
+            }
+        }
+    }
+
+  	return maxValue
+}
